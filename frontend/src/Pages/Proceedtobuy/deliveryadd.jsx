@@ -55,7 +55,6 @@ function DeliveryAdd() {
       try {
         await saveAddressToDatabase(address);
         await fetchData();
-
         setOpen(false);
       } catch (error) {
         console.error('Error saving address:', error);
@@ -68,8 +67,7 @@ function DeliveryAdd() {
   const handleclick = (selectedAddress) => {
     navigate('/dashboard/payment', { state: { selectedAddress } });
   };
-  
-  
+
   const saveAddressToDatabase = async (address) => {
     try {
       const response = await fetch('http://localhost:5000/del/delivery', {
@@ -108,27 +106,23 @@ function DeliveryAdd() {
       </Typography>
 
       <Grid container spacing={8} padding={10}>
-      {data.map((item, index) => (
-  <Grid item key={index}>
-    <Card variant="outlined">
-      <CardContent>
-        <Typography variant="h6" gutterBottom>
-          {item.fullName}
-        </Typography>
-        <Typography variant="subtitle1" gutterBottom>
-          {item.addressLine}, {item.area}, {item.state}, {item.pincode}
-        </Typography>
-        <Button
-          variant="contained"
-          color="warning"
-          onClick={() => handleclick(item)} // Pass the selected address here
-        >
-          Use this address
-        </Button>
-      </CardContent>
-    </Card>
-  </Grid>
-))}
+        {data.map((item, index) => (
+          <Grid item key={index}>
+            <Card variant="outlined">
+              <CardContent>
+                <Typography variant="h6" gutterBottom>
+                  {item.fullName}
+                </Typography>
+                <Typography variant="subtitle1" gutterBottom>
+                  {item.addressLine}, {item.area}, {item.state}, {item.pincode}
+                </Typography>
+                <Button variant="contained" color="warning"  onClick={() => handleclick(item)}>
+                  Use this address
+                </Button>
+              </CardContent>
+            </Card>
+          </Grid>
+        ))}
       </Grid>
 
       <Button variant="contained" color="warning" onClick={handleClickOpen}>
@@ -238,8 +232,8 @@ function DeliveryAdd() {
           </FormControl>
 
           <div style={{ display: 'flex', justifyContent: 'center' }}>
-            <Button variant="contained" color="warning"  onClick={() => handleUseAddress}>
-              Save Address
+            <Button variant="contained" color="warning" onClick={handleUseAddress}>
+              Save address
             </Button>
           </div>
         </DialogContent>

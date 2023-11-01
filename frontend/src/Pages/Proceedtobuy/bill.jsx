@@ -17,11 +17,11 @@ const centerContentStyle = {
   flexDirection: 'column',
   alignItems: 'center',
   justifyContent: 'center',
-  height: '100vh',
+  height: '130vh',
 };
 
 const cardStyle = {
-  maxWidth: 600, // Increased width for the table
+  maxWidth: 700, // Increased width for the table
   padding: 20,
 };
 
