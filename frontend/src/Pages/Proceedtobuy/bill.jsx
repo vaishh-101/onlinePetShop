@@ -87,11 +87,11 @@ function Bill({ onPlaceOrder }) {
                   selectedProducts.map((product, index) => (
                     <TableRow key={index}>
                       <TableCell>{product.title}</TableCell>
-                      <TableCell>${parseFloat(product.price).toFixed(2)}</TableCell>
-                      <TableCell>$30.00</TableCell> {/* Fixed 30 Rs delivery charge */}
+                      <TableCell>Rs{parseFloat(product.price).toFixed(2)}</TableCell>
+                      <TableCell>Rs 30.00</TableCell> {/* Fixed 30 Rs delivery charge */}
                       <TableCell>3%</TableCell> {/* 3% GST */}
                       <TableCell>
-                        ${(
+                        Rs{(
                           parseFloat(product.price) +
                           30 + // Delivery Charges
                           (0.03 * parseFloat(product.price)) // 3% GST
@@ -103,7 +103,7 @@ function Bill({ onPlaceOrder }) {
                   <TableCell colSpan={4} align="right">
                     Total Bill
                   </TableCell>
-                  <TableCell>${totalBill.toFixed(2)}</TableCell>
+                  <TableCell>Rs{totalBill.toFixed(2)}</TableCell>
                 </TableRow>
               </TableBody>
             </Table>

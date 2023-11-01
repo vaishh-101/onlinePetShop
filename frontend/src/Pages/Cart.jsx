@@ -78,7 +78,7 @@ const Cart = ({ selectedProducts, onProductDelete, onProceed }) => {
       </div>
       <div style={{ textAlign: "center", marginTop: "20px" }}>
         <Typography variant="h6" component="div">
-          Total Price: ${totalPrice}
+          Total Price: Rs. {totalPrice}
         </Typography>
         <Button variant="contained" color="primary" onClick={handleclick}>
           Proceed
