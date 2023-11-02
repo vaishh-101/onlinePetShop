@@ -20,7 +20,7 @@ function ordered() {
 
   const gifURL = "https://cdn.dribbble.com/users/28588/screenshots/3669080/holfuy_done_gifconvert.gif";
 
-  const isMobileView = window.innerWidth < 768; // You can adjust the breakpoint as needed
+  const isMobileView = window.innerWidth < 768; 
 
   return (
     <div style={centerContentStyle}>
@@ -31,7 +31,6 @@ function ordered() {
             alt="GIF"
             style={{ width: '100%', height: 'auto', maxWidth: '100%', maxHeight: isMobileView ? '70vh' : 'auto' }}
           />
-          {/* Your card content goes here */}
         </CardContent>
       </Card>
     </div>

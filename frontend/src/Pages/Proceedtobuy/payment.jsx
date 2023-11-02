@@ -24,8 +24,8 @@ const centerContentStyle = {
 
 const centerImageStyle = {
   display: 'block',
-  margin: '0 auto', // Center the image horizontally
-  maxWidth: '100%', // Ensure the image is responsive
+  margin: '0 auto', 
+  maxWidth: '100%', 
   height: 'auto',
 };
 
@@ -48,27 +48,23 @@ function Payment(props) {
   const selectedPay = location.state.selectedPay;
   const [paymentMethod, setPaymentMethod] = useState('');
 
- // Payment component
-
-// ... (previous code)
 
 const handleUsePaymentMethod = () => {
-  // Handle the logic for using the selected payment method
+
   console.log('Payment method used:', paymentMethod);
 
-  // Check if selectedAddress is available before navigating
+
   if (selectedAddress) {
-    // Navigate to the next component (Bill) and pass the data as props
     navigate('/dashboard/bill', {
       state: {
         selectedAddress,
         paymentMethod,
-        selectedPay: 'Your selectedPay data here', // Replace with your actual data
+        selectedPay: 'Your selectedPay data here', 
         selectedProducts,
       },
     });
   }
-  // Handle the case where selectedAddress is not available
+ 
   else {
     console.error('selectedAddress is not available.');
   }

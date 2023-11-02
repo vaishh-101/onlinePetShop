@@ -21,12 +21,12 @@ const centerContentStyle = {
 };
 
 const cardStyle = {
-  maxWidth: 700, // Increased width for the table
+  maxWidth: 700, 
   padding: 20,
 };
 
 const tableStyle = {
-  minWidth: 400, // Adjust the width as needed
+  minWidth: 400, 
 };
 
 const buttonStyle = {
@@ -38,16 +38,15 @@ function Bill({ onPlaceOrder }) {
   const location = useLocation();
   const selectedAddress = location.state.selectedAddress;
   const paymentMethod = location.state.paymentMethod;
-  const selectedProducts = location.state.selectedProducts; // Get selectedProducts from location
-
-  // Calculate the total bill with 3% GST and a delivery charge of 30 Rs per product
+  const selectedProducts = location.state.selectedProducts; 
+  
   const totalBill = selectedProducts
     ? selectedProducts.reduce(
         (total, product) =>
           total +
           parseFloat(product.price) + // MRP
-          30 + // Delivery Charges (fixed 30 Rs per product)
-          (0.03 * parseFloat(product.price)), // 3% GST
+          30 + 
+          (0.03 * parseFloat(product.price)),
         0
       )
     : 0;
@@ -88,13 +87,13 @@ function Bill({ onPlaceOrder }) {
                     <TableRow key={index}>
                       <TableCell>{product.title}</TableCell>
                       <TableCell>Rs{parseFloat(product.price).toFixed(2)}</TableCell>
-                      <TableCell>Rs 30.00</TableCell> {/* Fixed 30 Rs delivery charge */}
-                      <TableCell>3%</TableCell> {/* 3% GST */}
+                      <TableCell>Rs 30.00</TableCell> 
+                      <TableCell>3%</TableCell> 
                       <TableCell>
                         Rs{(
                           parseFloat(product.price) +
-                          30 + // Delivery Charges
-                          (0.03 * parseFloat(product.price)) // 3% GST
+                          30 + 
+                          (0.03 * parseFloat(product.price)) 
                         ).toFixed(2)}
                       </TableCell>
                     </TableRow>

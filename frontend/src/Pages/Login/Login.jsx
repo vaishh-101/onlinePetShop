@@ -7,7 +7,7 @@ import axios from 'axios';
 function Login() {
   const centerStyle = {
     display: 'flex',
-    flexDirection: 'column', // Change to column layout for responsiveness
+    flexDirection: 'column', 
     alignItems: 'center',
     justifyContent: 'center',
     height: '100vh',
@@ -23,7 +23,7 @@ textAlign: "center"
   };
 
   const textContainerStyle = {
-    marginTop: '20px', // Use margin-top instead of marginLeft for spacing
+    marginTop: '20px', 
     textAlign: 'center',
   };
 
@@ -53,16 +53,15 @@ textAlign: "center"
   const [password, setPassword] = useState("");
 
   const handleLogin = () => {
-    // Create a user object to send in the request URL
+ 
     const user = {
       username,
       password,
     };
 
-    // Make a GET request to check if the user exists
     axios.get(`http://localhost:5000/api/users?username=${user.username}&password=${user.password}`)
       .then(response => {
-        // Check if the user was found in the response data
+       
         if (response.data.length > 0) {
           localStorage.setItem("username", user.username);
           localStorage.setItem("fullName", response.data[0].fullname); 
