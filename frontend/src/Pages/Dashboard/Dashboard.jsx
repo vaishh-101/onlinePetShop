@@ -155,7 +155,7 @@ function Dashboard(props) {
             </div>
           </Toolbar>
 
-          {/* Responsive menu for small screens */}
+       
           <Menu
             anchorEl={menuAnchorEl}
             open={Boolean(menuAnchorEl)}
