@@ -8,7 +8,7 @@ const ContactRouter = require('./Routes/ContactRoute')
 const cors = require("cors");
 const DeliveryRoute = require('./Routes/delivery');
 
-const PORT = process.env.PORT || 5000 
+const PORT = process.env.PORT || 8000 
 async function connectToDB(){
     const connection = mongoose.connect(process.env.MONGO_URI)
     if(connection){
