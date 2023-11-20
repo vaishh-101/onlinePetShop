@@ -14,6 +14,13 @@ import DeliveryAdd from "./Pages/Proceedtobuy/deliveryadd";
 import Payment from "./Pages/Proceedtobuy/payment";
 import Bill from "./Pages/Proceedtobuy/bill";
 import Ordered from "./Pages/Proceedtobuy/ordered";
+import Admin from './Pages/admin pages/admin';
+import ProductPage from "./Pages/admin pages/product";
+import Medicine from "./Pages/admin pages/med";
+import UserPage from "./Pages/admin pages/user"
+import AddressPage from "./Pages/admin pages/address";
+import ContactPage from "./Pages/admin pages/contact";
+import Home1 from "./Pages/admin pages/home";
 
 function App() {
   const [selectedProducts, setSelectedProducts] = useState([]);
@@ -35,6 +42,14 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/admin" element={<Admin />} >
+        <Route path="productPage" element={<ProductPage />} /> 
+        <Route path="medicine" element={<Medicine />} />
+        <Route path="user" element={<UserPage />} />
+        <Route path="address" element={<AddressPage  />} />
+        <Route path="contact" element={<ContactPage  />} />
+        <Route path="hom" element={<Home1 />} />
+          </Route>
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/dashboard" element={<Dashboard counter={counter} />}>

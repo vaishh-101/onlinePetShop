@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
@@ -11,6 +11,7 @@ import TableRow from '@mui/material/TableRow';
 import Button from '@mui/material/Button';
 import { useLocation } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const centerContentStyle = {
   display: 'flex',
@@ -21,12 +22,12 @@ const centerContentStyle = {
 };
 
 const cardStyle = {
-  maxWidth: 700, 
+  maxWidth: 700,
   padding: 20,
 };
 
 const tableStyle = {
-  minWidth: 400, 
+  minWidth: 400,
 };
 
 const buttonStyle = {
@@ -34,23 +35,72 @@ const buttonStyle = {
 };
 
 function Bill({ onPlaceOrder }) {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
   const location = useLocation();
   const selectedAddress = location.state.selectedAddress;
   const paymentMethod = location.state.paymentMethod;
-  const selectedProducts = location.state.selectedProducts; 
-  
+  const selectedProducts = location.state.selectedProducts;
+
+  const [loading, setLoading] = useState(false);
+
   const totalBill = selectedProducts
     ? selectedProducts.reduce(
         (total, product) =>
           total +
-          parseFloat(product.price) + // MRP
-          30 + 
+          parseFloat(product.price) + 
+          30 +
           (0.03 * parseFloat(product.price)),
         0
       )
     : 0;
-
+    const handlePlaceOrder = async () => {
+      try {
+        setLoading(true);
+    
+    
+        const orderData = {
+          items: selectedProducts.map((product) => ({
+            productName: product.title,
+            quantity: 1,
+            price: parseFloat(product.price),
+          })),
+          totalAmount: totalBill,
+          customerName: selectedAddress.fullName,
+        };
+    
+   
+        const response = await fetch('http://localhost:5000/bills', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(orderData),
+        });
+    
+        if (response.status === 201) {
+       
+          Swal.fire({
+            icon: 'success',
+            title: 'Order Placed Successfully!',
+            text: 'Thank you for your order.',
+          }).then((result) => {
+      
+            if (result.isConfirmed) {
+              navigate('/dashboard/main');
+            }
+          });
+    
+        
+        } else {
+          console.error('Failed to place the order');
+        }
+      } catch (error) {
+        console.error('Error placing the order:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    
   return (
     <div style={centerContentStyle}>
       <Card style={cardStyle}>
@@ -109,10 +159,14 @@ function Bill({ onPlaceOrder }) {
           </TableContainer>
         </CardContent>
       </Card>
-      <Button variant="contained" color="primary" style={buttonStyle} onClick={() => {
-          navigate('/dashboard/ordered');
-        }}>
-        Place an Order
+      <Button
+        variant="contained"
+        color="primary"
+        style={buttonStyle}
+        onClick={handlePlaceOrder}
+        disabled={loading}
+      >
+        {loading ? 'Placing Order...' : 'Place an Order'}
       </Button>
     </div>
   );

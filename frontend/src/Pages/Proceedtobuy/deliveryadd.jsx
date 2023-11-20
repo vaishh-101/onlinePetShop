@@ -29,18 +29,24 @@ function DeliveryAdd() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetchData();
+    // Fetch saved addresses from localStorage when the component mounts
+    const savedAddresses = JSON.parse(localStorage.getItem('userAddresses')) || [];
+    setData(savedAddresses);
   }, []);
 
-  const fetchData = async () => {
-    try {
-      const response = await fetch('http://localhost:5000/del/delivery');
-      const data = await response.json();
-      setData(data);
-    } catch (error) {
-      console.error('Error fetching data:', error);
-    }
-  };
+  // useEffect(() => {
+  //   fetchData();
+  // }, []);
+
+  // const fetchData = async () => {
+  //   try {
+  //     const response = await fetch('http://localhost:5000/del/delivery');
+  //     const data = await response.json();
+  //     setData(data);
+  //   } catch (error) {
+  //     console.error('Error fetching data:', error);
+  //   }
+  // };
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -54,7 +60,10 @@ function DeliveryAdd() {
     if (validateFields()) {
       try {
         await saveAddressToDatabase(address);
-        await fetchData();
+       
+        setData(prevData => [...prevData, address]);
+      
+        localStorage.setItem('userAddresses', JSON.stringify([...data, address]));
         setOpen(false);
       } catch (error) {
         console.error('Error saving address:', error);
@@ -63,6 +72,7 @@ function DeliveryAdd() {
       console.error('Mandatory fields are not filled.');
     }
   };
+  
 
   const handleclick = (selectedAddress) => {
     navigate('/dashboard/payment', { state: { selectedAddress } });

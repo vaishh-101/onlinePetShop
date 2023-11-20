@@ -50,7 +50,7 @@ UserRoute.delete('/users/:id', async (req, res) => {
   try {
     const { id } = req.params;
 
-    const user = await User.findByIdAndRemove(id);
+    const user = await User.findOneAndDelete({ _id: id });
 
     if (!user) {
       return res.status(404).json({ error: 'User not found' });

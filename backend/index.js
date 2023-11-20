@@ -7,8 +7,11 @@ const UserRoute = require('./Routes/UserRoute');
 const ContactRouter = require('./Routes/ContactRoute')
 const cors = require("cors");
 const DeliveryRoute = require('./Routes/delivery');
+const ProductRouter = require('./Routes/Products')
+const MedicineRoute = require('./Routes/med')
+const billRoutes = require('./Routes/bill');
 
-const PORT = process.env.PORT || 8000 
+const PORT = process.env.PORT || 5000 
 async function connectToDB(){
     const connection = mongoose.connect(process.env.MONGO_URI)
     if(connection){
@@ -31,10 +34,12 @@ app.use(cors(options));
 
 app.use(express.json());
 
-
+app.use('/', billRoutes);
 app.use('/api', UserRoute);
-app.use('/contact', ContactRouter)
+app.use('/', ContactRouter)
 app.use('/del',DeliveryRoute)
+app.use('/product', ProductRouter)
+app.use('/med', MedicineRoute)
 
 app.get("/", function(req, res) {
   res.send("Hello");

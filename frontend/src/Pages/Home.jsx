@@ -59,7 +59,7 @@ function Home() {
         <img
           src={img}
           alt="SQUIRREL"
-          style={{ maxWidth: '100%', maxHeight: '50vh' }} // Limit image height
+          style={{ maxWidth: '100%', maxHeight: '50vh' }} 
         />
         <div style={textContainerStyle}>
           <h4 style={{ fontSize: '40px', fontFamily: 'Harrington', ...textSpacing }}>

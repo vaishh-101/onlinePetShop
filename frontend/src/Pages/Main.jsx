@@ -101,21 +101,20 @@ const CardWrapper = styled.div`
     {
       img: 'https://images.vetster.com/grey_cat_being_petted_fb599118c3.jpg',
       category: 'WELLNESS',
-      title: 'Preventative wellness tips for your cat',
-      description: 'There are many ways you can improve your cat’s physical and mental state. Annual veterinary exams, staying up to date on vaccines,',
+      title: 'Preventative wellness tips for your Cat',
+      description: 'Schedule routine veterinary check-ups for vaccinations and health evaluations.Offer a nutritionally balanced diet appropriate for your cats age and health.Encourage regular exercise through interactive play and exploration.Maintain a safe indoor environment, free from potential hazards and toxins.',
     },
     {
       img: 'https://images.vetster.com/puppy_eating_from_bowl_0db6a6081d.jpg',
       category: 'BLOG',
-      title: 'Preventative wellness tips for your cat',
-      description: 'There are many ways you can improve your cat’s physical and mental state. Annual veterinary exams, staying up to date on vaccines,',
+      title: 'Preventative wellness tips for your Dog',
+      description: 'Ensure regular veterinary check-ups for vaccinations and health assessments.Provide a balanced diet tailored to your dogs age, size, and breed.Engage in daily exercise to maintain physical and mental well-being Keep your dogs environment clean and safe, addressing any potential hazards.',
     },
     {
       img: 'https://images.vetster.com/General_Advice_and_Guidance_in_Virtual_Care_USA_CAN_3a5476d52e.jpg',
       category: 'WELLNESS',
-      title: 'Preventative wellness tips for your cat',
-      description: 'There are many ways you can improve your cat’s physical and mental state. Annual veterinary exams, staying up to date on vaccines,',
-    },
+      title: 'Preventative wellness tips for your pets',
+      description: 'Schedule regular veterinary check-ups to monitor overall health and address potential issues.Provide a well-balanced diet tailored to your pets species, age, and specific needs.Foster mental and physical well-being through interactive play and exercise, minimizing potential hazards for your pet.' },
   ];
 
   const animalitem = [
@@ -160,7 +159,7 @@ function Main() {
                 <Typography variant="body2" color="text.secondary">
                   {card.description}
                 </Typography>
-                <a href="#">Learn more →</a>
+                <a href="https://www.petcarerx.com/">Learn more →</a>
               </CardContent>
             </Card>
           </Grid>
