@@ -41,6 +41,7 @@ const dashboardStyle = {
 };
 
 function Dashboard(props) {
+  // const userName = "John Doe";
   const { counter } = props;
 
   let navigate = useNavigate();
@@ -128,7 +129,7 @@ function Dashboard(props) {
 
                   <Avatar
                     style={{ marginLeft: "20px" }}
-                    alt="Admin"
+                    // alt={userName} 
                     src="/broken-image.jpg"
                   ></Avatar>
                   <ListItemIcon
